@@ -119,6 +119,101 @@ var ASTFixture = AST.program([
             [ AST.literal('Statement') ]
         )
     })),
+    AST.typeDeclaration('AST', AST.object({
+        'program': AST.functionType({
+            args: [ AST.generic(
+                AST.literal('Array'),
+                [ AST.literal('Statement') ]
+            ) ],
+            result: AST.literal('Program')
+        }),
+        'typeDeclaration': AST.functionType({
+            args: [
+                AST.literal('String'),
+                AST.literal('TypeExpression')
+            ],
+            result: AST.literal('TypeDeclaration')
+        }),
+        'object': AST.functionType({
+            args: [
+                AST.union([
+                    AST.generic(
+                        AST.literal('Array'),
+                        [ AST.literal('KeyValue') ]
+                    ),
+                    AST.generic(
+                        AST.literal('Object'),
+                        [
+                            AST.literal('String'),
+                            AST.literal('TypeDeclaration')
+                        ]
+                    )
+                ], 'keyValues'),
+                AST.literal('String', 'label?', {
+                    optional: true
+                })
+            ],
+            result: AST.literal('ObjectE')
+        }),
+        'union': AST.functionType({
+            args: [
+                AST.generic(
+                    AST.literal('Array'),
+                    [ AST.literal('TypeExpression') ]
+                ),
+                AST.literal('String', 'label?', {
+                    optional: true
+                }),
+                AST.object({
+                    'optional': AST.literal('Boolean')
+                }, 'opts?', { optional: true })
+            ],
+            result: AST.literal('UnionE')
+        }),
+        'literal': AST.functionType({
+            args: [
+                AST.literal('String'),
+                AST.literal('String', 'builtin?', {
+                    optional: true
+                }),
+                AST.object({
+                    'optional': AST.literal('Boolean')
+                }, 'opts?', { optional: true })
+            ],
+            result: AST.literal('LiteralE')
+        }),
+        'keyValue': AST.functionType({
+            args: [
+                AST.literal('String'),
+                AST.literal('TypeExpression')
+            ],
+            result: AST.literal('KeyValue')
+        }),
+        'value': AST.functionType({
+            args: [
+                AST.literal('String'),
+                AST.literal('String', 'name'),
+                AST.literal('String', 'label?', {
+                    optional: true
+                })
+            ],
+            result: AST.literal('ValueE')
+        }),
+        'functionType': null,
+        'generic': AST.functionType({
+            args: [
+                AST.literal('TypeExpression'),
+                AST.generic(
+                    AST.literal('Array'),
+                    [ AST.literal('TypeExpression') ]
+                ),
+                AST.literal('String', 'label?', {
+                    optional: true
+                })
+            ],
+            result: AST.literal('GenericE')
+        })
+    })),
     AST.assignment('jsig/ast', AST.literal('AST')),
     AST.assignment('jsig/parser', AST.functionType({
         args: [ AST.literal('String', 'content') ],

@@ -36,7 +36,8 @@ function assignment(identifier, typeExpression) {
     }
 }
 
-function object(keyValues, label) {
+function object(keyValues, label, opts) {
+    opts = opts || {}
     if (!Array.isArray(keyValues)) {
         keyValues = Object.keys(keyValues)
             .reduce(function (acc, key) {
@@ -49,7 +50,7 @@ function object(keyValues, label) {
         type: 'object',
         keyValues: keyValues,
         label: label || null,
-        optional: false
+        optional: opts.optional || false
     }
 }
 
