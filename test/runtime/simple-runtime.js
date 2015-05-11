@@ -59,7 +59,7 @@ test('extra file throws on invalid argument', function (assert) {
     });
 
     assert.ok(res[0]);
-    assert.equal(res[0].type, 'expected.union');
+    assert.equal(res[0].type, 'expected.function.arg.intersection');
 
     assert.end();
 });
@@ -70,7 +70,7 @@ test('extra throws on invalid return', function (assert) {
     });
 
     assert.ok(res[0]);
-    assert.equal(res[0].type, 'expected.union');
+    assert.equal(res[0].type, 'expected.function.result.intersection');
     assert.notEqual(res[0].message
         .indexOf('return value of '), -1);
 
