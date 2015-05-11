@@ -19,6 +19,7 @@ module.exports = {
     renamedLiteral: renamedLiteral
 };
 
+// multiple statements
 function program(statements) {
     return {
         type: 'program',
@@ -26,6 +27,7 @@ function program(statements) {
     };
 }
 
+// type id : expr
 function typeDeclaration(identifier, typeExpression, generics) {
     return {
         type: 'typeDeclaration',
@@ -35,9 +37,19 @@ function typeDeclaration(identifier, typeExpression, generics) {
     };
 }
 
+// id : expr
 function assignment(identifier, typeExpression) {
     return {
         type: 'assignment',
+        identifier: identifier,
+        typeExpression: typeExpression
+    };
+}
+
+// id <: expr
+function constraint(identifier, typeExpression) {
+    return {
+        type: 'constraint',
         identifier: identifier,
         typeExpression: typeExpression
     };

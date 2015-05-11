@@ -1,0 +1,17 @@
+
+sum1 : (String | Number, String | Number) => String | Number
+sum2 : (
+    ((String, String) => String) &
+    ((Number, Number) => Number)
+)
+sum3 : (A <: String | Number) :: (A, A) => A
+
+index1 : (Array<T> | Object<String, T>, Number | String) => T
+index2 : (
+    ((Array<T>, Number) => T) &
+    ((Object<String, T>, String) => T)
+)
+index3 : (
+    (X <: Array<T> & S <: Number) |
+    (X <: Object<String, T> & S <: String)
+) :: (X, S) => T

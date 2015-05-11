@@ -125,3 +125,19 @@ test('compile bad example 5', function t(assert) {
         assert.end();
     });
 });
+
+test('compile bad example 6', function t(assert) {
+    var file = path.join(__dirname, '..',
+        'fixtures', 'simple-runtime', 'bad-example-6.js');
+
+    compile({
+        _: [file]
+    }, function onMeta(err, meta) {
+        assert.ok(err);
+
+        assert.equal(err.message,
+            'Expected to get a string but found Number');
+
+        assert.end();
+    });
+});
