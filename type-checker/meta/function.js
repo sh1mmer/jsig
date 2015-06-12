@@ -48,7 +48,7 @@ FunctionMeta.createFromNode =
 function createFromNode(parentMeta, node, jsigType) {
     var fMeta = FunctionMeta(parentMeta);
 
-    console.log('?', jsigType);
+    // console.log('?', jsigType);
 
     node.params.forEach(function checkParam(param, index) {
         /* istanbul ignore if */

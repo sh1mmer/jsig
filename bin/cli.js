@@ -44,7 +44,7 @@ function main(opts) {
         var annotate = require('./annotate.js');
         annotate(opts, function (err) {
             if (err) {
-                console.log('stack', new Error().stack);
+                // console.log('stack', new Error().stack);
                 throw err;
             }
         });
@@ -52,7 +52,7 @@ function main(opts) {
         var typeCheck = require('./type-check.js');
         typeCheck(opts, function (err, code) {
             if (err) {
-                console.log('stack', new Error().stack);
+                // console.log('stack', new Error().stack);
                 throw err;
             }
 
